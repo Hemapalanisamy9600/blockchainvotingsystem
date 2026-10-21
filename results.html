@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Results | BLOCKVOTE{% endblock %}
+{% block content %}
+<section class="section">
+<div class="tag">ELECTION RESULTS</div><h1>Live voting results</h1>
+{% if winners %}
+<div class="winner"><div class="trophy">🏆</div><div><small>WINNER</small><h2>{{ winners|join(", ") }}</h2><p>{{ max_votes }} vote(s)</p></div></div>
+{% else %}
+<div class="notice">No votes have been recorded yet.</div>
+{% endif %}
+<div class="grid">
+{% for r in rows %}
+<article class="card"><div class="symbol">{{ r.symbol }}</div><h3>{{ r.name }}</h3><p>{{ r.party }}</p><div class="big">{{ r.votes }}</div><small>Votes</small></article>
+{% endfor %}
+</div>
+</section>
+{% endblock %}

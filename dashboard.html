@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | BLOCKVOTE{% endblock %}
+{% block content %}
+<section class="section">
+<div class="tag">VOTER DASHBOARD</div><h1>Welcome, {{ user["name"] }}</h1>
+<div class="profile"><b>Voter ID:</b> {{ user["voter_id"] }} <span>•</span> <b>Email:</b> {{ user["email"] }}</div>
+{% if voted %}
+<div class="notice success">✓ Your vote has already been recorded.</div>
+<a class="btn primary" href="{{ url_for('results') }}">View results</a>
+{% else %}
+<h2>Select one candidate</h2>
+<div class="grid">
+{% for c in candidates %}
+<article class="candidate card">
+<div class="symbol">{{ c.symbol }}</div><h3>{{ c.name }}</h3><p>{{ c.party }}</p>
+<form method="post" action="{{ url_for('vote', candidate_id=c.id) }}" onsubmit="return confirm('Confirm your vote?')">
+<button class="btn primary">Vote for {{ c.name }}</button>
+</form>
+</article>
+{% endfor %}
+</div>
+{% endif %}
+</section>
+{% endblock %}

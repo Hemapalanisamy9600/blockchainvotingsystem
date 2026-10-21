@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Register | BLOCKVOTE{% endblock %}
+{% block content %}
+<div class="formpage"><form class="formbox" method="post">
+<div class="tag">CREATE ACCOUNT</div><h1>Register</h1>
+<label>Full name<input name="name" required></label>
+<label>Voter ID<input name="voter_id" placeholder="VOTER001" required></label>
+<label>Email<input type="email" name="email" placeholder="demo@gmail.com" required></label>
+<label>Password<input type="password" name="password" minlength="8" required></label>
+<button class="btn primary">Create account</button>
+<p>Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+</form></div>
+{% endblock %}

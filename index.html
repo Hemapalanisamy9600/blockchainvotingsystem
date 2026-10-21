@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}BLOCKVOTE | Secure Voting{% endblock %}
+{% block content %}
+<section class="hero">
+<div>
+<div class="tag">DECENTRALIZED • SECURE • TRANSPARENT</div>
+<h1>Vote smarter.<br><span>Vote securely.</span></h1>
+<p>A clean academic demonstration of blockchain-based electronic voting with transparent verification.</p>
+<div class="actions">
+<a class="btn primary" href="{{ url_for('register') }}">Get started</a>
+<a class="btn" href="{{ url_for('blockchain') }}">Explore blockchain</a>
+</div>
+</div>
+<div class="orb">
+<div class="cube">BLOCK<br>VOTE</div>
+<div class="ring"></div>
+</div>
+</section>
+<section class="stats">
+<div><b>{{ voters }}</b><span>Registered voters</span></div>
+<div><b>{{ votes }}</b><span>Votes recorded</span></div>
+<div><b>SHA-256</b><span>Block verification</span></div>
+</section>
+<section class="section">
+<div class="tag">CANDIDATES</div><h2>Choose your representative</h2>
+<div class="grid">
+{% for c in candidates %}
+<article class="card"><div class="symbol">{{ c.symbol }}</div><h3>{{ c.name }}</h3><p>{{ c.party }}</p></article>
+{% endfor %}
+</div>
+</section>
+{% endblock %}

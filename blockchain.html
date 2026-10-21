@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Blockchain | BLOCKVOTE{% endblock %}
+{% block content %}
+<section class="section">
+<div class="tag">PUBLIC VERIFICATION</div><h1>Blockchain explorer</h1>
+<div class="chainstatus {% if valid %}ok{% else %}bad{% endif %}">{% if valid %}✓ Chain integrity verified{% else %}⚠ Chain integrity check failed{% endif %}</div>
+{% for b in blocks %}
+<article class="block">
+<div class="blockhead"><b>Block #{{ b.block_no }}</b><span>{{ b.timestamp }}</span></div>
+<p><b>Previous hash</b><code>{{ b.previous_hash }}</code></p>
+<p><b>Block hash</b><code>{{ b.block_hash }}</code></p>
+<p><b>Payload</b><code>{{ b.payload }}</code></p>
+</article>
+{% endfor %}
+</section>
+{% endblock %}
